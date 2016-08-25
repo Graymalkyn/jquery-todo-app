@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <title>Todo List</title>
+    <link href="style.css" rel="stylesheet" />
+  </head>
+
+  <body>
+
+    <div class="container">
+      <h1>Todo List</h1>
+
+      <input id="item-input" />
+
+      <ul class="list">
+      </ul>
+
+      <script type="text/html" id="templateStuff">
+        <li><%= item %>
+          <img id="trash-can" data-id="<%= guestId %>" src="trash.svg"/>
+          <img src="edit.svg" />
+        </li>
+      </script>
+
+
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/lodash/4.15.0/lodash.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="script.js"></script>
+    <script>ToDo.start();</script>
+  </body>
+
+</html>

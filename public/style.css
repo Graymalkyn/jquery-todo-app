@@ -45,5 +45,32 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
-p {
-  color: red; }
+.container {
+  width: 400px;
+  margin: 40px;
+  font-family: sans-serif;
+  border: 2px solid #ededed;
+  padding: 10px; }
+
+input {
+  width: 95%;
+  padding: 5px; }
+
+h1 {
+  font-size: 1.5em;
+  margin-bottom: 10px; }
+
+ul {
+  margin: 10px; }
+
+li {
+  padding: 5px;
+  background-color: #ededed;
+  overflow: auto;
+  margin: 5px 0; }
+
+img {
+  width: 15px;
+  float: right;
+  top: 3px;
+  margin: 0 5px; }

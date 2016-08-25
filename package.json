@@ -1,26 +1,10 @@
 {
-  "name": "jquery-todo-app",
+  "name": "js-todo-list",
   "version": "1.0.0",
-  "description": "This is a repository I'm using for class stuff.",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Graymalkyn/jquery-todo-app.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Graymalkyn/jquery-todo-app/issues"
-  },
-  "homepage": "https://github.com/Graymalkyn/jquery-todo-app#readme",
-  "devDependencies": {
-    "gulp": "^3.9.1",
-    "gulp-sass": "^2.3.2"
-  },
+  "description": "",
+  "main": "app.js",
   "dependencies": {
+    "body-parser": "^1.15.2",
     "express": "^4.14.0"
   }
 }
