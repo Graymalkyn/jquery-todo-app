@@ -6,12 +6,15 @@ if (this.ToDo === undefined) this.ToDo = {};
   var promise;
   var guestId;
 
-
-//
   function getListItem(){
     itemEntry = $('#item-input');
     ajaxCall();
     itemEntry.val(' ');
+  }
+
+  var className = '';
+  if (isComplete == 'true') {
+    className = "completed";
   }
 
   function ajaxCall() {
@@ -23,7 +26,6 @@ if (this.ToDo === undefined) this.ToDo = {};
         text: itemValue,
         isComplete: false
       }
-
     })
 
     .done(function(result){
@@ -35,21 +37,33 @@ if (this.ToDo === undefined) this.ToDo = {};
           guestId: result.id
         });
       $('.list').append(html);
-
     })
-
   }
 
   function deleteClicked(evt) {
     var $target = $(evt.target);
     var id = $target.data('id');
     console.log('id', id);
-    alert('You have just deleted item number:', id);
+    // alert('You have just deleted item number:' + id);
 
     $.ajax({
       url: '/api/todo/' + id,
       method: 'DELETE'
     });
+
+    $target.parent().remove();
+  }
+
+  function completedTask(evt){
+    var $target = $(evt.target);
+    var id = $target.data('id');
+
+    $.ajax({
+      url: 'api/todo' + id,
+      method: 'PUT'
+    })
+
+    target.parent().toggleClass('completed');
   }
 
   function start() {
@@ -60,7 +74,10 @@ if (this.ToDo === undefined) this.ToDo = {};
       }
     })
 
-    $('.list').on('click', deleteClicked),
+    $('.list').on('click','.trash-can', deleteClicked),
+
+    $('.list').on('click','.pencil', completedTask),
+
 
     $.ajax({
       url: '/api/todo',
@@ -78,8 +95,6 @@ if (this.ToDo === undefined) this.ToDo = {};
         $('.list').append(html);
       }
     })
-
-
   };
 
   context.start = start;
