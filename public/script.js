@@ -12,10 +12,25 @@ if (this.ToDo === undefined) this.ToDo = {};
     itemEntry.val(' ');
   }
 
-  var className = '';
-  if (isComplete == 'true') {
-    className = "completed";
+
+
+  function template(itemValue, id, isComplete){
+    var className = '';
+    if (isComplete == 'true') {
+      className = "completed";
+    }
+    var templateHtml = $('#templateStuff').html();
+    var templateFunc = _.template(templateHtml);
+    var html = templateFunc(
+      {
+        item: itemValue,
+        guestId: id,
+        className: className
+      });
+    $('.list').append(html);
   }
+
+
 
   function ajaxCall() {
     var itemValue = itemEntry.val();
@@ -29,15 +44,8 @@ if (this.ToDo === undefined) this.ToDo = {};
     })
 
     .done(function(result){
-      var templateHtml = $('#templateStuff').html();
-      var templateFunc = _.template(templateHtml);
-      var html = templateFunc(
-        {
-          item: itemValue,
-          guestId: result.id
-        });
-      $('.list').append(html);
-    })
+      template(itemValue, result.id, false);
+    }); //done
   }
 
   function deleteClicked(evt) {
@@ -63,7 +71,7 @@ if (this.ToDo === undefined) this.ToDo = {};
       method: 'PUT'
     })
 
-    target.parent().toggleClass('completed');
+    $target.parent().toggleClass('completed');
   }
 
   function start() {
@@ -85,16 +93,9 @@ if (this.ToDo === undefined) this.ToDo = {};
     })
     .done(function(data){
       for (var i=0; i<data.list.length; i++){
-        var templateHtml = $('#templateStuff').html();
-        var templateFunc = _.template(templateHtml);
-        var html = templateFunc(
-          {
-            item:data.list[i].text,
-            guestId: data.list[i].id
-          });
-        $('.list').append(html);
+        template(data.list[i].text, data.list[i].id, true)
       }
-    })
+    });
   };
 
   context.start = start;
