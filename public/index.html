@@ -16,12 +16,13 @@
       <input id="item-input" />
 
       <ul class="list">
+
       </ul>
 
       <script type="text/html" id="templateStuff">
-        <li class="<%= className %>"><%= item %>
-          <img class="trash-can" data-id="<%= guestId %>" src="trash.svg"/>
-          <img class="pencil" data-id="<%= guestId %>" src="edit.svg"/>
+        <li class="<%= className %>"   data-id="<%= guestId %>" data-text="<%= text %>">
+          <%= text %>
+          <img class="trash-can" src="trash.svg"/>
         </li>
       </script>
 
